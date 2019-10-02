@@ -1,7 +1,9 @@
 package com.unitec.primeraapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,6 +13,14 @@ class MainActivity : AppCompatActivity() {
 
         //quitamos la action bar que aparece de defecto
         actionBar?.hide()
+
+        //Manejamos evebto d
+        ingresar.setOnClickListener{
+            //Aquiponemos el codigo de navegacion
+
+            var i=Intent(  this,BienvenidoActivity::class.java)
+            startActivity(i)
+        }
 
     }
 }
