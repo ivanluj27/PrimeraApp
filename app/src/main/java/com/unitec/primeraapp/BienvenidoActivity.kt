@@ -16,15 +16,25 @@ class BienvenidoActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            var sonido = MediaPlayer.create(applicationContext,R.raw.Funny)
-            //Se inicia el sonido
-            sonido.start()
-            var sonido2 = MediaPlayer.create(applicationContext,R.raw.Sad)
-            //Se inicia el sonido
-            sonido2.start()
+
             var peso= txtpeso.text.toString().toFloat()
             var altura= txtaltura.text.toString().toFloat()
             var imc = MiImc()
+            //primero obtenermos el valor del imc
+            var valor = imc.calcular(peso,altura);
+            //Comparamos
+            if (valor>=20 && valor<=30){
+
+            var sonido = MediaPlayer.create(applicationContext,R.raw.funny)
+            //Se inicia el sonido
+            sonido.start()
+        }
+            else{
+
+                var sonido2 = MediaPlayer.create(applicationContext,R.raw.sad)
+                //Se inicia el sonido
+                sonido2.start()
+            }
             Snackbar.make(view, "Tu peso es $peso tu altura es $altura Tu IMC es ${imc.calcular(peso,altura)}", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
